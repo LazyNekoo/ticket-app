@@ -1,6 +1,10 @@
 import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
-import 'package:ticket_app/screens/home_screen.dart';
+import 'package:ticket_app/screens/home/home_screen.dart';
+import 'package:ticket_app/screens/profile/profile.dart';
+import 'package:ticket_app/screens/ticket/ticket_screen.dart';
+
+import '../screens/search/search_screen.dart';
 
 class BottomNavBar extends StatefulWidget {
   const BottomNavBar({Key? key}) : super(key: key);
@@ -13,9 +17,9 @@ class _BottomNavBarState extends State<BottomNavBar> {
 
   final List<Widget> appScreens = [
     const HomeScreen(),
-    const Center(child: Text("Search")),
-    const Center(child: Text("Tickets")),
-    const Center(child: Text("Profile")),
+    const SearchScreen(),
+    const TicketScreen(),
+    const ProfileScreen(),
   ];
 
   //change our index for BottomNavBar
@@ -30,9 +34,6 @@ class _BottomNavBarState extends State<BottomNavBar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Center(child: const Text("My tickets"))
-      ),
       body: appScreens[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
